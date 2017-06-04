@@ -14,4 +14,7 @@
                   )
   user.email = "#{user.name}.#{user.surname}@gmail.com"
   user.save!
+  [1,2,3,4,5].sample.times do
+    user.posts.create(content: Faker::Lorem.sentence(5, false, 6))
+  end
 end
