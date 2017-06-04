@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h5>Received friend requests from:</h5>
+    <ul class="list-group">
+      <% @user.received_friend_requests.each do |r| %>
+        <% unless r.accepted %>
+            <li class="list-group-item">
+              <% u = User.find(r.sending_user_id) %>
+                <%= u.name %> <%= u.surname %>
+                <%= form_tag friend_request_path, method: :put, class: 'form-inline' do %>
+                  <%= hidden_field_tag :update_id, r.sending_user_id %>
+                <%= submit_tag "Accept", class: 'btn btn-primary btn-sm' %>
+              <% end %>
+            </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-xs-6">
+    <h5>Sent friend requests to:</h5>
+      <ul class="list-group" >
+        <% @user.sent_friend_requests.each do |r| %>
+          <% unless r.accepted %>
+            <% u = User.find(r.receiving_user_id) %>
+              <li class='list-group-item'><%= u.name %> <%= u.surname %></li>
+            <% end %>
+        <% end %>
+      </ul>
+  </div>
+</div>
