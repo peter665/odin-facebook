@@ -1,0 +1,10 @@
+<%= form_for @new_post, url: posts_path do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="text-center">
+    <%= f.submit "Post It!", class: 'btn btn-primary btn-lg' %>
+  </div>
+
+<% end %>

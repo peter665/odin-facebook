@@ -12,7 +12,7 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do |type, mes| %>
-        <div class="alert alert-<%= type %>">
+        <div id="messages" class="alert alert-<%= type %>">
           <%= mes %>
         </div>
       <% end %>

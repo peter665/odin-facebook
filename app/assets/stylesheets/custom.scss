@@ -23,6 +23,10 @@ body {
   text-align: center
 }
 
+textarea.form-control {
+  height: 250px;
+}
+
 /*flash*/
 .alert-error {
     background-color: #f2dede;

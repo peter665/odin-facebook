@@ -4,10 +4,14 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <%= user.name %> <%= user.surname %>
-          <%= form_tag friend_requests_path do %>
-            <%= hidden_field_tag :id_receiving, user.id %>
-            <%= submit_tag 'Send friend request', class: 'btn btn-primary btn-sm' %>
-          <% end %>
+            <%= form_tag friend_requests_path do %>
+              <%= hidden_field_tag :id_receiving, user.id %>
+              <% unless current_user.friends.include?(user) %>
+                <%= submit_tag 'Send friend request', class: 'btn btn-primary btn-sm' %>
+              <% else %>
+                <%= submit_tag 'Send friend request', class: 'btn btn-primary btn-sm', disabled: 'disabled' %>
+              <% end %>
+            <% end %>
         </div>
       </div>
     <% end %>

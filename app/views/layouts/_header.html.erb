@@ -14,7 +14,10 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><%= link_to "Members", users_path %></li>
-          <li><%= link_to("My Profile", user_path(current_user.id)) %></li>
+          <li><%= link_to user_path(current_user.id) do %>
+                  My Profile(<%= current_user.name %>)
+              <% end %>
+          </li>
           <% if current_user.new_friend_req > 0 %>
             <li>
               <%= link_to user_path(current_user.id), class:'btn btn-info' do %>

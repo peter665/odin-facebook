@@ -2,19 +2,18 @@ class FriendRequestsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    f = current_user.sent_friend_requests
-    unless f.collect { |u| u.receiving_user_id }.include?(params[:id_receiving].to_i)
-      f.build(receiving_user_id: params[:id_receiving])
-        if f[-1].save
+    unless current_user.friends.ids.include?(params[:id_receiving].to_i)
+      f = current_user.sent_friend_requests.build(receiving_user_id: params[:id_receiving])
+        if f.save
           flash[:success] = 'Friend request sent'
-          redirect_to authenticated_root_path
+          redirect_to users_path
         else
-          flash[:danger] = 'Error while sending friend request'
-          redirect_to authenticated_root_path
+          flash[:danger] = 'You have already sent a friend request to this user!'
+          redirect_to users_path
         end
     else
-      flash[:danger] = "You have already sent a friend request to this user!"
-      redirect_to authenticated_root_path
+      flash[:danger] = "You are already friends!"
+      redirect_to users_path
     end
   end
 
