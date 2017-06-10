@@ -17,6 +17,11 @@
           <li><%= link_to user_path(current_user.id) do %>
                   My Profile(<%= current_user.name %>)
               <% end %>
+          <% if current_user.avatar.present? %>
+            <li>
+              <%= image_tag current_user.avatar.url(:mini), class: "img-circle navpic" %>
+            </li>
+          <% end %>
           </li>
           <% if current_user.new_friend_req > 0 %>
             <li>

@@ -5,8 +5,8 @@
         <blockquote><label>Name:    </label> <%= @user.name %></blockquote>
         <blockquote><label>Surname: </label> <%= @user.surname %></blockquote>
         <blockquote><label>Email:   </label> <%= @user.email %></blockquote>
-
-        <%= link_to 'Edit Profile', edit_user_registration_path(@user), class: 'btn btn-primary' %>
+        <blockquote><%= image_tag @user.avatar.url(:medium), class: "img-rounded" %></blockquote>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
       <hr />
       <h4><%= @user.name %>`s Posts</h4>
       <% @user.posts.each do |post| %>

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
+  has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100", mini: "50x50"}
+
   # has_many :friends, -> { where(friend_requests: { accepted: true}) }, through: :friend_requests,
   #           foreign_key: :receiving_user_id, source: :user
 
@@ -15,7 +17,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
+
   validates :name, :surname, presence: true
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 
 

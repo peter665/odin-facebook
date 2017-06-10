@@ -34,6 +34,7 @@ gem 'font-awesome-rails'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem "paperclip"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
