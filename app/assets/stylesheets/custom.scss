@@ -56,3 +56,24 @@ textarea.form-control {
     text-align: left;
  }
  /*END flash*/
+
+.no_dec {
+  text-decoration: none  !important;
+  color: inherit;
+}
+
+.blue {
+  color: #3b5998;
+}
+
+::-webkit-input-placeholder {
+   font-size: 25px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+      font-size: 25px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+      font-size: 25px;
+}

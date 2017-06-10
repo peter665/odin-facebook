@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   # has_many :friends, -> { where(friend_requests: { accepted: true}) }, through: :friend_requests,
   #           foreign_key: :receiving_user_id, source: :user
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
   def new_friend_req
     self.received_friend_requests.where(accepted:false).count
+  end
+
+  def liked? post
+    self.liked_posts.include?(post)
   end
 
 

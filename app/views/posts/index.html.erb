@@ -4,15 +4,24 @@
   </div>
   <div class="col-md-6">
     <% @posts.each do |post| %>
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <%= post.content %>
-          <hr />
-          <small>Author: <%= post.author.name %></small>
-          <small><%= post.created_at%></small>
-          <%= button_to("Like", likes_path, method: :post, params: { post: {post_id: post.id } }, class: "btn btn-primary btn-sm pull-right") %>
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-10 col-sm-11">
+                <%= link_to post_path(post), class: 'no_dec' do %>
+                  <%= post.content %>
+                  <hr />
+                  <small>Author: <%= post.author.name %></small>
+                  <small><%= post.created_at.strftime("%k:%M, #{post.created_at.day.ordinalize} %B %Y" )%></small>
+                  <span class="pull-right">Comments: <%= post.comments.count %></span>
+                <% end %>
+              </div>
+              <div class="col-xs-2 col-sm-1">
+                <%= render :partial => 'shared/likes_form', :locals => {post: post} %>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
     <% end %>
   </div>
 </div>

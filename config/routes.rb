@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, except: [:new, :create]
+  resources :users
   resources :friend_requests, only: [:create, :destroy, :update]
   resources :posts
+  resources :comments, only: [:create, :destroy]
   resources :likes, only: :create
 end

@@ -12,9 +12,13 @@ class PostsController < ApplicationController
         flash[:success] = "You made a new Post!"
         redirect_to posts_path
       else
-        flash[:danger] = "Error while making a Post!"
+        flash[:danger] = @post.errors.full_messages.to_sentence
         redirect_to posts_path
       end
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def destroy

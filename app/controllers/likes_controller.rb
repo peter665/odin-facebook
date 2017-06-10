@@ -4,11 +4,11 @@ class LikesController < ApplicationController
   def create
     liked_post = current_user.likes.build(likes_params)
     if liked_post.save
-      flash[:success] = 'You liked this post'
-      redirect_to posts_path
+      flash[:success] = "You liked #{Post.find(params[:post][:post_id]).author.name}`s post"
+      redirect_to :back
     else
       flash[:danger] = 'You already liked this post!'
-      redirect_to posts_path
+      redirect_to :back
     end
   end
 

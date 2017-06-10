@@ -1,10 +1,12 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="well">
-      <h3 class="centered"><%= @user.name %> <%= @user.surname %></h3>
-      <% if current_user?(@user) %>
-        <%= render 'friend_requests' %>
-      <% end %>
+      <h3 class="centered">My Profile</h3>
+        <blockquote><label>Name:    </label> <%= @user.name %></blockquote>
+        <blockquote><label>Surname: </label> <%= @user.surname %></blockquote>
+        <blockquote><label>Email:   </label> <%= @user.email %></blockquote>
+
+        <%= link_to 'Edit Profile', edit_user_registration_path(@user), class: 'btn btn-primary' %>
       <hr />
       <h4><%= @user.name %>`s Posts</h4>
       <% @user.posts.each do |post| %>
@@ -25,6 +27,9 @@
           <% end %>
         <% end %>
       </ul>
+      <% if current_user?(@user) %>
+        <%= render 'friend_requests' %>
+      <% end %>
 
     </div>
   </div>

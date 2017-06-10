@@ -1,0 +1,9 @@
+<% unless current_user.liked?(post)%>
+  <%= button_to(likes_path, method: :post, params: { post: {post_id: post.id } },
+      class: "btn btn-primary btn-sm",
+      form: {style: 'display:inline;', class:'pull-right'}) do %>
+        <i class="fa fa-thumbs-o-up fa-lg"></i>
+  <% end %>
+<% else %>
+  <i class="fa fa-thumbs-up fa-lg pull-right blue"></i>
+<% end %>
