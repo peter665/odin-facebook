@@ -35,6 +35,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "paperclip"
+gem 'omniauth-facebook'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

@@ -72,14 +72,33 @@ textarea.form-control {
   width: auto;
 }
 
-::-webkit-input-placeholder {
+.lb-sm {
+  font-size: 12px;
+}
+
+/*Placeholder sizes */
+
+input::-webkit-input-placeholder {
    font-size: 25px;
 }
 
-:-moz-placeholder { /* Firefox 18- */
+input::-moz-placeholder { /* Firefox 18- */
       font-size: 25px;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+input::-moz-placeholder {  /* Firefox 19+ */
       font-size: 25px;
 }
+
+input.navb::-webkit-input-placeholder {
+   font-size: 15px;
+}
+
+input.navb::-moz-placeholder { /* Firefox 18- */
+      font-size: 15px;
+}
+
+input.navb::-moz-placeholder {  /* Firefox 19+ */
+      font-size: 15px;
+}
+/*END Placeholder sizes */
