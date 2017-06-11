@@ -32,7 +32,9 @@
           <% end %>
         </ul>
         <% else %>
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        <%= link_to user_facebook_omniauth_authorize_path do %>
+          <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
+        <% end %>
           <div class="nav navbar-nav navbar-right">
             <%= form_tag(session_path(resource_name), class: 'navbar-form') do %>
               <div class="form-group">
