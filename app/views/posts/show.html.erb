@@ -5,9 +5,10 @@
         <div class="row">
           <div class="col-xs-10 col-sm-11">
             <p>
-              Posted by: <%= @post.author.name %> <%= @post.author.surname %>
+              <%= image_tag @post.author.avatar(:mini), class: 'img-rounded' %>
+              <span style="font-size:16px"><%= @post.author.name %> <%= @post.author.surname %></span>
               <small><%= @post.created_at.strftime("#{@post.created_at.day.ordinalize} %B %Y") %></small>
-                <span class="pull-right">Likes: <%= @post.likes.count %></span>
+              <span class="pull-right">Likes: <%= @post.likes.count %></span>
             </p>
           </div>
           <div class="col-xs-2 col-sm-1">
@@ -20,11 +21,12 @@
         <p>
           <%= @post.content %>
         </p>
+        <%= image_tag(@post.picture, class: 'img-responsive img-rounded') if @post.picture.present? %>
         <hr />
         <h4><small>Comments</small></h4>
 
         <div class="row">
-          <div class="col-md-11 col-md-offset-1">
+          <div class="col-md-12">
             <%= form_tag comments_path, method: :post do %>
               <%= hidden_field_tag :post_id, params[:id] %>
               <%= hidden_field_tag "comment[commenter_id]", current_user.id %>
@@ -38,6 +40,7 @@
             <% @post.comments.each do |comment| %>
               <div class="well">
                 <p>
+                  <%= image_tag @post.author.avatar(:micro), class: 'img-rounded' %>
                   <%= link_to comment.commenter.name, user_path(comment.commenter) %> -
                   <small><%= time_ago_in_words(comment.created_at) %> ago</small>
                 </p>

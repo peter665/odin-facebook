@@ -3,8 +3,13 @@
     <%= f.text_area :content, class: 'form-control', placeholder: 'Your post...' %>
   </div>
 
+  <div class="form-group">
+    <%= f.file_field :picture %>
+  </div>
+
   <div class="text-center">
     <%= f.submit "Post It!", class: 'btn btn-primary btn-lg btn-block' %>
   </div>
+
 
 <% end %>
